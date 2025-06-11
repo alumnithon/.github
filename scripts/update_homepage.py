@@ -22,7 +22,7 @@ from rich.console import Console
 
 # Definición de tipos específicos
 type RepoInfo = dict[str, str | int]
-type OrgInfo = dict[str, str | int]
+
 type MemberInfo = dict[str, str]
 type UpdateInfo = dict[str, str]
 type CommonResource = dict[str, str]
@@ -34,8 +34,8 @@ def create_readme(path: Path | None = None ,**kwargs:str) -> str:
 
     if path is None:
         path = Path.cwd()
-    name: str | None = kwargs.get("name", "NoName")
-    year = kwargs.get("year", datetime.now().year)
+    name: str  = kwargs.get("name", "NoName")
+    year: int = int(kwargs.get("year", datetime.now().year))
     # Get the directory where the script is located
     script_dir: Path = Path(__file__).parent
     template_dir: Path = script_dir / "templates"
@@ -78,18 +78,7 @@ def get_organization_data(org_name: str, token: str) -> dict[str, Any]:
         repos.sort(key=lambda x: x["stars"], reverse=True)
 
         # Obtener información básica de la organización
-        org_info: OrgInfo = {
-            "name": org.name,
-            "login": org.login,
-            "description": org.description or "Sin descripción",
-            "html_url": org.html_url,
-            "public_repos": org.public_repos,
-            "followers": org.followers,
-            "location": org.location or "No especificada",
-            "blog": org.blog or "",
-            "email": org.email or "",
-            "created_at": org.created_at.strftime("%Y-%m-%d") if org.created_at else "N/A"
-        }
+
 
         # Obtener algunos miembros públicos (limitado a los primeros 10)
         members = []
@@ -105,10 +94,9 @@ def get_organization_data(org_name: str, token: str) -> dict[str, Any]:
             console.print(f"[yellow]No se pudieron obtener los miembros: {e}[/yellow]")
 
         return {
-            "organization": org_info,
-            "repositories": repos[:10],  # Limitar a los 10 primeros
+            "repositories": repos[:10] if repos else "",  # Limitar a los 10 primeros
             "members": members,
-            "total_repos": len(repos)
+            "total_repos": len(repos) if repos else 0
         }
 
     except Exception as e:
@@ -145,6 +133,9 @@ def write_stream(content: str, path: Path) -> None:
 
 def has_changes(repo_path: Path) -> bool:
     """Verifica si hay cambios en el repositorio."""
+    if not repo_path.is_dir():
+        console.print(f"[red]El directorio {repo_path} no es un repositorio válido.[/red]")
+        return False
     result = subprocess.run(
         ["git", "status", "--porcelain"],
         cwd=repo_path,
@@ -158,12 +149,16 @@ def main():
     """Función principal para actualizar el README del perfil de la organización."""
 
     # Generar README del perfil - usar la función refactorizada
-    nueva_portada: str = create_readme(
-        name="Alumnithon",
-    )
     print("Generando README del perfil de la organización...")
+    nueva_portada: str = create_readme(
+        name="Alumnithon 2025",
+        # other kwargs params...
+        # year=datetime.now().year
+        # year=2025
+
+    )
+    print("Actualizando README del perfil de la organización...")
     write_stream(nueva_portada, Path("profile/README.md"))
-    print("README del perfil de la organización generado correctamente.")
 
 if __name__ == "__main__":
     main()

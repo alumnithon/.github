@@ -1,49 +1,148 @@
-# {{name}}
+# {{name|default("Alumnithon")}}
 
-Bienvenido a Alumnithon, una iniciativa que busca acercar a los egresados del programa Oracle Next
-Education (ONE) a un ambiente profesional de desarrollo a través de un emocionante hackathon. Esta
-experiencia única permite a los participantes demostrar sus habilidades técnicas, trabajar en equipo
-y conectar con empresas que buscan talento joven.
+{% if description %}
+{{description}}
+{% else %}
+Bienvenido a **Alumnithon**, una iniciativa que busca acercar a los egresados del programa Oracle Next Education (ONE) a un ambiente profesional de desarrollo a través de un emocionante hackathon. Esta experiencia única permite a los participantes demostrar sus habilidades técnicas, trabajar en equipo y conectar con empresas que buscan talento joven.
+{% endif %}
 
-## Hackathon Edicion {{current_year}}
+{% if status %}
+![Status](https://img.shields.io/badge/Status-{{status|replace(" ", "%20")}}-{% if status == "Active" %}green{% elif status == "Upcoming" %}blue{% elif status == "Completed" %}red{% else %}gray{% endif %})
+{% endif %}
+{% if participants_count %}
+![Participants](https://img.shields.io/badge/Participants-{{participants_count}}-blue)
+{% endif %}
+{% if duration %}
+![Duration](https://img.shields.io/badge/Duration-{{duration|replace(" ", "%20")}}-orange)
+{% endif %}
 
-### Condiciones
+---
 
-- Duración: 4 semanas
-- Fecha: 10 de Junio 2025 - 28 de Junio 2025
-- Modalidad: Remoto
-- Participantes: Egresados del programa Oracle Next Education
-- Herramientas: GitHub, Discord, Trello, y otras herramientas de colaboración
+## 🚀 Hackathon Edición {{current_year|default("2025")}}
 
-### Objetivo
+### 📋 Condiciones
 
-El objetivo del hackathon es desarrollar un proyecto innovador que resuelva un problema real o
-mejore un proceso existente. Los participantes tendrán la oportunidad de aplicar sus conocimientos
-en programación, diseño y gestión de proyectos, mientras trabajan en equipo para crear una solución
-funcional.
+{% if event_details %}
+- **Duración:** {{event_details.duration|default("4 semanas")}}
+- **Fecha:** {{event_details.start_date|default("10 de Junio 2025")}} - {{event_details.end_date|default("28 de Junio 2025")}}
+- **Modalidad:** {{event_details.modality|default("Remoto")}}
+- **Participantes:** {{event_details.requirements|default("Egresados del programa Oracle Next Education y Debes haber finalizado las formaciones de AlumniONE. ¡Ese es tu pase directo al AlumniTHON!")}}
+- **Herramientas:** {{event_details.tools|default("GitHub, Discord, Trello, y otras herramientas de colaboración")}}
+{% else %}
+- **Duración:** 4 semanas
+- **Fecha:** 10 de Junio 2025 - 28 de Junio 2025
+- **Modalidad:** Remoto
+- **Participantes:** Egresados del programa Oracle Next Education y Debes haber finalizado las formaciones de AlumniONE. ¡Ese es tu pase directo al AlumniTHON!
+- **Herramientas:** GitHub, Discord, Trello, y otras herramientas de colaboración
+{% endif %}
 
-### Definición de Grupos
+### 🎯 Objetivo
 
-- Cada grupo estará formado por 10 participantes
-- Los equipos serán formados de por huso horario y habilidades complementarias
-- Se fomentará la diversidad en los equipos para enriquecer la experiencia de aprendizaje
-### Roles y Responsabilidades
-- Se asignará un mentor técnico por equipo
-- El equipo consta de roles backend y frontend
+{% if objective %}
+{{objective}}
+{% else %}
+El objetivo del hackathon es desarrollar un proyecto innovador que resuelva un problema real o mejore un proceso existente. Los participantes tendrán la oportunidad de aplicar sus conocimientos en programación, diseño y gestión de proyectos, mientras trabajan en equipo para crear una solución funcional.
+{% endif %}
+
+### 👥 Definición de Grupos
+
+{% if team_structure %}
+{% for item in team_structure %}
+- {{item}}
+{% endfor %}
+{% else %}
+- Cada grupo estará formado por **10 participantes** con roles backend y frontend
+- Los equipos serán formados por **huso horario** y **habilidades complementarias**
+- Se fomentará la **diversidad** en los equipos para enriquecer la experiencia de aprendizaje
+{% endif %}
+
+### 🛠️ Roles y Responsabilidades
+
+{% if roles %}
+{% for role in roles %}
+- **{{role.name}}:** {{role.description}}
+{% endfor %}
+{% else %}
+- Se asignará un **mentor técnico** por equipo
+- El equipo consta de roles **backend** y **frontend**
 - Cada equipo deberá designar:
-  - Un líder de proyecto
-  - Roles técnicos según las necesidades del proyecto
+  - Un **líder de proyecto**
+  - **Roles técnicos** según las necesidades del proyecto
+{% endif %}
 
-### Evaluación
+### 📊 Evaluación
 
 Los proyectos serán evaluados según los siguientes criterios:
 
+{% if criterios and criterios is iterable and criterios is not string %}
+{% for criterio in criterios %}
+- {{criterio}}
+{% endfor %}
+{% elif criterios %}
 {{criterios}}
+{% else %}
+- **Innovación y Creatividad** (25%)
+- **Funcionalidad y Calidad Técnica** (25%)
+- **Trabajo en Equipo y Colaboración** (20%)
+- **Presentación y Comunicación** (15%)
+- **Impacto y Viabilidad** (15%)
+{% endif %}
 
-### ¿Cómo participar?
+### 🚀 ¿Cómo participar?
 
-1. Asegúrate de ser egresado del programa Oracle Next Education
-2. Únete al servidor de Discord del evento
-4. Espera la confirmación de tu equipo
+{% if participation_steps %}
+{% for step in participation_steps %}
+{{loop.index}}. {{step}}
+{% endfor %}
+{% else %}
+1. **Asegúrate** de ser egresado del programa Oracle Next Education
+2. **Únete** al servidor de Discord del evento
+3. **Completa** el formulario de registro
+4. **Espera** la confirmación de tu equipo
+{% endif %}
 
-Para más información, mantente atento a los canales oficiales.
+{% if prizes %}
+### 🏆 Premios
+
+{% if prizes is iterable and prizes is not string %}
+{% for prize in prizes %}
+- {{prize}}
+{% endfor %}
+{% else %}
+{{prizes}}
+{% endif %}
+{% endif %}
+
+{% if timeline %}
+### 📅 Cronograma
+
+{% if timeline is iterable and timeline is not string %}
+{% for event in timeline %}
+- **{{event.date}}:** {{event.description}}
+{% endfor %}
+{% else %}
+{{timeline}}
+{% endif %}
+{% endif %}
+
+### 📞 Contacto
+
+{% if contact_info %}
+{{contact_info}}
+{% else %}
+Para más información, mantente atento a los **canales oficiales**.
+
+{% if social_links %}
+{% for social in social_links %}
+- [{{social.name}}]({{social.url}})
+{% endfor %}
+{% endif %}
+{% endif %}
+
+---
+
+{% if footer %}
+{{footer}}
+{% else %}
+*¡Esperamos verte en el Alumnithon {{current_year|default("2025")}}! 🎉*
+{% endif %}
