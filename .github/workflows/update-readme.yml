@@ -1,0 +1,36 @@
+name: Actualizar Portada Organización
+
+env:
+  USER_NAME: 'github-actions[bot]'
+  USER_EMAIL: 'github-actions[bot]@users.noreply.github.com'
+
+on:
+  # pull_request:
+  #   branches:
+  #     - main
+  # push:
+  #   branches:
+  #     - main
+  # schedule:
+  #   - cron: '0 0 * * *' # Ejecutar diariamente a medianoche UTC
+  workflow_dispatch:
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup UV
+        uses: astral-sh/setup-uv@v6
+        with:
+          version: 'latest'
+          enable-cache: true
+          cache-dependency-glob: scripts/*.py
+      - name: Run python script to update profile README
+        run: uv run scripts/update_profile_readme.py
+      - name: Commit changes
+        run: |
+          git config --local user.name "${{ env.USER_NAME }}"
+          git config --local user.email "${{ env.USER_EMAIL }}"

@@ -1,0 +1,5 @@
+[project]
+  dependencies    = ["PyGithub", "jinja2", "python-dotenv", "rich>=13.0.0"]
+  name            = "dotgithub"
+  requires-python = ">=3.12"
+  version         = "0.1.0"
