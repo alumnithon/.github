@@ -35,7 +35,6 @@ jobs:
 
       - name: Run python script to update profile README
         run: uv run scripts/update_homepage.py
-        working-directory: .github
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
