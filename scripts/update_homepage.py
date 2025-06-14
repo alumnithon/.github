@@ -158,7 +158,9 @@ def main():
 
     )
     print("Actualizando README del perfil de la organización...")
-    write_stream(nueva_portada, Path("profile/README.md"))
+    # Use absolute path relative to the repository root
+    readme_path = Path(__file__).parent.parent.parent / "profile" / "README.md"
+    write_stream(nueva_portada, readme_path)
 
 if __name__ == "__main__":
     main()

@@ -18,19 +18,35 @@ on:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup UV
         uses: astral-sh/setup-uv@v6
         with:
           version: 'latest'
           enable-cache: true
-          cache-dependency-glob: scripts/*.py
+          cache-dependency-glob: .github/pyproject.toml
+
       - name: Run python script to update profile README
-        run: uv run scripts/update_profile_readme.py
+        run: uv run scripts/update_homepage.py
+        working-directory: .github
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Commit changes
         run: |
           git config --local user.name "${{ env.USER_NAME }}"
           git config --local user.email "${{ env.USER_EMAIL }}"
+          git add profile/README.md
+          if git diff --staged --quiet; then
+            echo "No changes to commit"; exit 0
+          else
+            git commit -m "docs: update organization profile README [skip ci]"
+            git push
+          fi
