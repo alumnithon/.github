@@ -50,6 +50,8 @@ Bienvenido a **Alumnithon**, una iniciativa que busca acercar a los egresados de
 
 ## 🚀 Hackathon Edición 2025
 
+![Roadmap Alumnithon](../assets/img/ROADMAP_ALUMNITHON.png)
+
 ### 📋 Condiciones
 
 
