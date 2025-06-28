@@ -120,7 +120,7 @@ Cada proyecto será revisado por múltiples jueces con criterios técnicos y hum
 
 ## skilllink
 
-- Descripcion
+- Plataforma de gestión de proyectos y habilidades
 
 ### Capturas
 
@@ -132,7 +132,6 @@ Cada proyecto será revisado por múltiples jueces con criterios técnicos y hum
 
 ![Mentor Interface](../assets/img/mentor_view.png)
 
-![Skilllink Logo](../assets/img/skilllink-logo.png)
 
 ### �️ Equipo 6 - Stormtrooper
 
