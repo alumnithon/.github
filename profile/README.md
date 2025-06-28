@@ -118,6 +118,22 @@ Cada proyecto será revisado por múltiples jueces con criterios técnicos y hum
 - Tiempo bien gestionado
 - Impacto de la solución
 
+## skilllink
+
+- Descripcion
+
+### Capturas
+
+![Skilllink Logo](../assets/img/skilllink-logo.png)
+
+![Admin Interface](../assets/img/admin_view.png)
+
+![User Interface](../assets/img/user_view.png)
+
+![Mentor Interface](../assets/img/mentor_view.png)
+
+![Skilllink Logo](../assets/img/skilllink-logo.png)
+
 ### �️ Equipo 6 - Stormtrooper
 
 **Estado:** En desarrollo | **Fecha:** 10-28 Junio 2025
