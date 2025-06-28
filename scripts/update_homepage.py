@@ -48,7 +48,10 @@ def create_readme(path: Path | None = None ,**kwargs:str) -> str:
     # Render template with provided data
     readme_content = template.render(
         name=name,
-        current_year=year
+        current_year=year,
+        show_visual_guides=True,
+        show_organizers=True,
+        show_documents=True
     )
     return readme_content
 
@@ -159,7 +162,7 @@ def main():
     )
     print("Actualizando README del perfil de la organización...")
     # Use absolute path relative to the repository root
-    readme_path = Path(__file__).parent.parent.parent / "profile" / "README.md"
+    readme_path = Path(__file__).parent.parent / "profile" / "README.md"
     write_stream(nueva_portada, readme_path)
 
 if __name__ == "__main__":

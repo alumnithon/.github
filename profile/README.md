@@ -10,6 +10,44 @@ Bienvenido a **Alumnithon**, una iniciativa que busca acercar a los egresados de
 
 ---
 
+## 📚 Recursos y Documentación
+
+### 🖼️ Guías Visuales de Desarrollo
+
+
+<details>
+<summary><strong>🔧 Operaciones CRUD y Arquitectura</strong></summary>
+
+![CRUD Operations](assets/img/CRUD_OPERATIONS.png)
+
+![Backend CRUD Guide](assets/img/BACKEND_CRUD_GUIDE.png)
+
+![Frontend CRUD Guide](assets/img/FRONTEND_CRUD_GUIDE.png)
+
+![Backend Frontend Link](assets/img/BACKEND_FRONTEND_LINK.png)
+
+![Backend Transactions](assets/img/BACKEND_TRANSACTIONS.png)
+
+![API Documentation](assets/img/API_DOCUMENTATION.png)
+
+</details>
+
+
+### 🏛️ Organización del Evento
+
+
+![Hackathon Organizers](assets/img/HACKATON_ORGANIZERS.png)
+
+
+### 📋 Documentos Oficiales
+
+
+- 📄 **[Rúbrica Evaluativa de Equipos](assets/pdfs/Rúbrica%20evaluativa%20Equipos.pdf)** - Criterios detallados de evaluación
+- 🗺️ **[Ruta del Alumnithon](assets/pdfs/Ruta%20Alumnithon.pdf)** - Guía completa del proceso del hackathon
+
+
+---
+
 ## 🚀 Hackathon Edición 2025
 
 ### 📋 Condiciones
