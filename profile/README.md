@@ -68,23 +68,9 @@ Bienvenido a **Alumnithon**, una iniciativa que busca acercar a los egresados de
 El objetivo del hackathon es desarrollar un proyecto innovador que resuelva un problema real o mejore un proceso existente. Los participantes tendrán la oportunidad de aplicar sus conocimientos en programación, diseño y gestión de proyectos, mientras trabajan en equipo para crear una solución funcional.
 
 
-### 👥 Definición de Grupos
+### 👥 Definiciones del Hackathon
 
-
-- Cada grupo estará formado por **10 participantes** con roles backend y frontend
-- Los equipos serán formados por **huso horario** y **habilidades complementarias**
-- Se fomentará la **diversidad** en los equipos para enriquecer la experiencia de aprendizaje
-
-
-### 🛠️ Roles y Responsabilidades
-
-
-- Se asignará un **mentor técnico** por equipo
-- El equipo consta de roles **backend** y **frontend**
-- Cada equipo deberá designar:
-  - Un **líder de proyecto**
-  - **Roles técnicos** según las necesidades del proyecto
-
+![Definitions](../assets/img/DEFINITIONS.png)
 
 ### 🎯 RÚBRICA DE EVALUACIÓN
 **Alumnithon 2025**
